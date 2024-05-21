@@ -1,32 +1,47 @@
-const navLinks = document.querySelectorAll(".nav-links li");
-const menuBtn = document.querySelector(".mobile-menu-btn");
-const mobileMenu = document.querySelector(".mobile-menu");
-const overflow = document.querySelector(".overflow");
-const mobileLinks = document.querySelectorAll(".mobile-links li");
+const featuresBtn = document.querySelector("#features-btn");
+const featuresUl = document.querySelector("#features-ul");
+const featuresBtnArrow = document.querySelector("#features-btn-arrow");
 
-menuBtn.addEventListener("click", () => {
-  const icon = document.querySelector(".mobile-menu-btn img");
-  menuBtn.classList.toggle("active-btn");
-  mobileMenu.classList.toggle("active-menu");
-  overflow.classList.toggle("active-menu");
-  if (menuBtn.classList.contains("active-btn")) {
-    icon.src = "./images/icon-close-menu.svg";
+featuresBtn.addEventListener("click", () => {
+  featuresUl.style.display =
+    featuresUl.style.display === "block" ? "none" : "block";
+  featuresBtnArrow.style.transition = "transform 0.3s ease";
+  featuresBtnArrow.style.transform =
+    featuresBtnArrow.style.transform === "rotate(180deg)"
+      ? "rotate(0deg)"
+      : "rotate(180deg)";
+});
+
+const companyBtn = document.querySelector("#company-btn");
+const companyUl = document.querySelector("#company-ul");
+const companyBtnArrow = document.querySelector("#company-btn-arrow");
+companyBtn.addEventListener("click", () => {
+  companyUl.style.display =
+    companyUl.style.display === "block" ? "none" : "block";
+  companyBtnArrow.style.transition = "transform 0.3s ease";
+  companyBtnArrow.style.transform =
+    companyBtnArrow.style.transform === "rotate(180deg)"
+      ? "rotate(0deg)"
+      : "rotate(180deg)";
+});
+
+const closeBtn = document.querySelector("#close-btn");
+const navBar = document.querySelector("nav");
+const hamburgerNenu = document.querySelector("#hamburger-menu");
+
+closeBtn.addEventListener("click", () => {
+  const screenSize = window.innerWidth;
+
+  if (screenSize >= 768) {
+    navBar.style.display = "block";
+    hamburgerNenu.style.display = "none";
   } else {
-    icon.src = "./images/icon-menu.svg";
+    navBar.style.display = "none";
+    hamburgerNenu.style.display = "block";
   }
 });
 
-navLinks.forEach((link) => {
-  const subMenu = link.querySelector(".sub-menu");
-  link.addEventListener("click", () => {
-    link.classList.toggle("active");
-    subMenu.classList.toggle("active-menu");
-  });
-});
-mobileLinks.forEach((link) => {
-  const subMenu = link.querySelector(".mobile-sub");
-  link.addEventListener("click", () => {
-    link.classList.toggle("active");
-    subMenu.classList.toggle("active-menu");
-  });
+hamburgerNenu.addEventListener("click", () => {
+  navBar.style.display = "block";
+  hamburgerNenu.style.display = "none";
 });
